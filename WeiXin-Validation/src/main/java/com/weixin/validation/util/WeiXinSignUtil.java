@@ -9,16 +9,13 @@ import java.util.Arrays;
  */
 public class WeiXinSignUtil {
 	
-	//与接口配置信息中的Token要一致
-    private static final String TOKEN = "startcaft";
-	
 	/**
 	 * 方法名：checkSignature</br> 
 	 * 详述：验证签名</br> 
 	 */
 	public static boolean checkSignature(String signature, String timestamp, String nonce) {
 		// 1.将token、timestamp、nonce三个参数进行字典序排序
-		String[] arr = new String[] { TOKEN, timestamp, nonce };
+		String[] arr = new String[] { WeiXinConstant.TOKEN, timestamp, nonce };
 		Arrays.sort(arr);
 
 		// 2. 将三个参数字符串拼接成一个字符串进行sha1加密
