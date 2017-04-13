@@ -42,6 +42,18 @@
 				<artifactId>druid</artifactId>
 				<version>1.0.18</version>
 			</dependency>
+			<!-- dom4j -->
+			<dependency>
+				<groupId>dom4j</groupId>
+				<artifactId>dom4j</artifactId>
+				<version>1.6.1</version>
+			</dependency>
+			<!-- xstream -->
+			<dependency>
+				<groupId>com.thoughtworks.xstream</groupId>
+				<artifactId>xstream</artifactId>
+				<version>1.4.9</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
