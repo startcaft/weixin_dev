@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import com.weixin.validation.app.service.CoreService;
+import com.weixin.validation.app.service.CoreServiceImpl;
 import com.weixin.validation.util.WeiXinSignUtil;
 
 @Controller
@@ -16,7 +16,7 @@ import com.weixin.validation.util.WeiXinSignUtil;
 public class WxCoreController {
 	
 	@Autowired
-	private CoreService coreService;
+	private CoreServiceImpl coreService;
 	
 	@RequestMapping(value="/init",method=RequestMethod.GET)
 	public void core(HttpServletRequest request,HttpServletResponse response) throws IOException{
@@ -45,7 +45,7 @@ public class WxCoreController {
 			request.setCharacterEncoding("UTF-8");//防止中文乱码
 			response.setCharacterEncoding("UTF-8");
 			
-			String respXmlData = coreService.processRequest(request);
+			String respXmlData = coreService.WeiXinMessageProcess(request);
 			
 			//响应消息
 			PrintWriter writer = response.getWriter();

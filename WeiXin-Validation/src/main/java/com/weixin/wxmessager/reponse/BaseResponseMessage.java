@@ -1,7 +1,7 @@
 package com.weixin.wxmessager.reponse;
 
 /**
- * 公众号返回的相应消息基类
+ * 公众号返回的响应消息基类
  */
 public abstract class BaseResponseMessage {
 	

@@ -4,6 +4,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
+import org.springframework.util.StringUtils;
+
 /**
  * 微信接入校验工具类
  */
@@ -14,6 +16,12 @@ public class WeiXinSignUtil {
 	 * 详述：验证签名</br> 
 	 */
 	public static boolean checkSignature(String signature, String timestamp, String nonce) {
+		
+		//防止意外的url调用
+		if(StringUtils.isEmpty(signature) || StringUtils.isEmpty(timestamp) || StringUtils.isEmpty(nonce)){
+			return false;
+		}
+		
 		// 1.将token、timestamp、nonce三个参数进行字典序排序
 		String[] arr = new String[] { WeiXinConstant.TOKEN, timestamp, nonce };
 		Arrays.sort(arr);
