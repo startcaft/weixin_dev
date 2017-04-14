@@ -5,13 +5,25 @@ package com.weixin.validation.util;
  */
 public class WeiXinContext {
 	
-	private static String accessToken;
+	private static WeiXinContext instance = null;
+	
+	private String accessToken;
 
-	public static String getAccessToken() {
-		return WeiXinContext.accessToken;
+	public String getAccessToken() {
+		return accessToken;
 	}
-
-	public static void setAccessToken(String accessToken) {
-		WeiXinContext.accessToken = accessToken;
+	public void setAccessToken(String accessToken) {
+		this.accessToken = accessToken;
+	}
+	
+	private WeiXinContext() {}
+	
+	synchronized public static WeiXinContext getInstance(){
+		{
+ 			if (instance == null) {
+ 				instance = new WeiXinContext();
+			}
+ 			return instance;
+ 		}
 	}
 }

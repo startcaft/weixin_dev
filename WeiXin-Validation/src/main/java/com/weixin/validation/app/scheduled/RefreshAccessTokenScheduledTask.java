@@ -54,7 +54,7 @@ public class RefreshAccessTokenScheduledTask {
 				try {
 					AccessToken accessToken = mapper.readValue(content, AccessToken.class);
 					// 将请求到的access_token保存到WeiXinContext微信上下文中。
-					WeiXinContext.setAccessToken(accessToken.getAccess_token());
+					WeiXinContext.getInstance().setAccessToken(accessToken.getAccess_token());
 				} catch (Exception e) {
 					ErrorEntity error = mapper.readValue(content, ErrorEntity.class);
 					System.out.println(error.getErrcode() + "，" + error.getErrmsg());
