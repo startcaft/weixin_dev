@@ -28,9 +28,11 @@ public class RefreshAccessTokenScheduledTask {
 	//测试每五秒执行一次该方法，系统启动后延迟3秒执行第一次
 	@Scheduled(fixedDelay=5000,initialDelay=3000)
 	public void reportCurrentTime(){
-		System.out.println("每隔五秒执行一次 " + dateFormat.format(new Date()));
+		System.out.println(Thread.currentThread().getName() + "--->每隔五秒执行一次 " + dateFormat.format(new Date()));
 	}
-
+	
+	//7000秒执行一次刷新access_token，大约117分钟。程序启动后立即执行第一次
+	//@Scheduled(fixedDelay=7000000)
 	public void refresh() {
 		
 		HttpGet get = null;
@@ -51,8 +53,6 @@ public class RefreshAccessTokenScheduledTask {
 				String content = EntityUtils.toString(entity);
 				try {
 					AccessToken accessToken = mapper.readValue(content, AccessToken.class);
-					// System.out.println(accessToken.getAccess_token() + "," +
-					// accessToken.getExpires_in());
 					// 将请求到的access_token保存到WeiXinContext微信上下文中。
 					WeiXinContext.setAccessToken(accessToken.getAccess_token());
 				} catch (Exception e) {
@@ -66,12 +66,11 @@ public class RefreshAccessTokenScheduledTask {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
-		} finally {
+		} finally {//释放资源
 			if (response != null) {
 				try {
 					response.close();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -79,7 +78,6 @@ public class RefreshAccessTokenScheduledTask {
 				try {
 					client.close();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
