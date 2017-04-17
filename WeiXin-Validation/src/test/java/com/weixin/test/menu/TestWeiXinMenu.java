@@ -24,37 +24,35 @@ public class TestWeiXinMenu {
 	public void testMenu(){
 		
 		List<WeiXinMenu> menus = new ArrayList<WeiXinMenu>();
-		//第一个一级菜单，跳转一个url
+		//一级菜单，如果一级菜单下有二级菜单，只需要配置name属性
 		WeiXinMenu menu1 = new WeiXinMenu();
 		menu1.setId(1);
 		menu1.setName("Git常用命令");
-		menu1.setType("click");
-		menu1.setKey("click-1");
-		menus.add(menu1);
 		
-		/*
-		//第二个一级菜单，包含二级菜单
-		WeiXinMenu menu2 = new WeiXinMenu();
-		menu2.setId(2);
-		menu2.setName("测试资源");
-		List<WeiXinMenu> menu2SubMenus = new ArrayList<WeiXinMenu>();
-		menu1 = new WeiXinMenu();
-		menu1.setId(3);
-		menu1.setpId(2);
-		menu1.setName("事件测试");
-		menu1.setType("click");
-		menu1.setKey("A0001");
-		menu2SubMenus.add(menu1);
-		menu1 = new WeiXinMenu();
-		menu1.setId(4);
-		menu1.setpId(2);
-		menu1.setName("扫描测试");
-		menu1.setType("pic_sysphoto");
-		menu1.setKey("rselfmenu_1_0");
-		menu2SubMenus.add(menu1);
-		menu2.setSub_button(menu2SubMenus);
-		menus.add(menu2);
-		*/
+		List<WeiXinMenu> m1SubMenus = new ArrayList<WeiXinMenu>();
+		
+		//二级级菜单，包含二级菜单
+		WeiXinMenu m1SubMenu1 = new WeiXinMenu();
+		m1SubMenu1.setId(2);
+		m1SubMenu1.setpId(1);
+		m1SubMenu1.setType("click");
+		m1SubMenu1.setKey("click-checkout");
+		m1SubMenu1.setName("git checkout");
+		
+		
+		WeiXinMenu m1SubMenu2 = new WeiXinMenu();
+		m1SubMenu2.setId(3);
+		m1SubMenu2.setpId(1);
+		m1SubMenu2.setType("click");
+		m1SubMenu2.setKey("click-reset");
+		m1SubMenu2.setName("git reset");
+		
+		m1SubMenus.add(m1SubMenu1);
+		m1SubMenus.add(m1SubMenu2);
+		
+		menu1.setSub_button(m1SubMenus);
+		
+		menus.add(menu1);
 		
 		Map<String,List<WeiXinMenu>> jsonMaps = new HashMap<String,List<WeiXinMenu>>();
 		jsonMaps.put("button", menus);
