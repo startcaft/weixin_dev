@@ -18,6 +18,7 @@ public class WxCoreController {
 	@Autowired
 	private CoreServiceImpl coreService;
 	
+	/*微信接入*/
 	@RequestMapping(value="/init",method=RequestMethod.GET)
 	public void core(HttpServletRequest request,HttpServletResponse response) throws IOException{
 		{
@@ -38,6 +39,7 @@ public class WxCoreController {
 		}
 	}
 	
+	/*处理微信消息*/
 	@RequestMapping(value="/init",method=RequestMethod.POST)
 	public void processMessage(HttpServletRequest request,HttpServletResponse response) throws IOException{
 		{
@@ -50,6 +52,19 @@ public class WxCoreController {
 			//响应消息
 			PrintWriter writer = response.getWriter();
 			writer.print(respXmlData);
+			writer.close();
+		}
+	}
+	
+	/*自定义菜单*/
+	@RequestMapping(value="/createMenu")
+	public void createMenu(HttpServletRequest request,HttpServletResponse response) throws IOException{
+		{
+			String resultJson = coreService.createWeiXinMenu(request);
+			
+			//响应消息
+			PrintWriter writer = response.getWriter();
+			writer.print(resultJson);
 			writer.close();
 		}
 	}

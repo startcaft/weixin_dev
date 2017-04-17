@@ -14,11 +14,17 @@ import com.weixin.validation.util.WeiXinContext;
 
 public class MenuService {
 	
-	public void createMenu(String menuJson){
+	/**
+	 * 创建自定义菜单
+	 * @param menuJson 自定义菜单的JSON数据
+	 * @return 微信服务器的回传消息JSON数据
+	 */
+	public String createMenu(String menuJson){
 		
 		CloseableHttpClient client = null;
 		HttpPost post = null;
 		CloseableHttpResponse response = null;
+		String responseJson = null;
 		
 		try {
 			client = HttpClients.createDefault();
@@ -33,7 +39,7 @@ public class MenuService {
 			int statusCode = response.getStatusLine().getStatusCode();
 			if (statusCode >= 200 && statusCode < 300) {
 				//输出微信服务器响应的结果
-				String responseJson = EntityUtils.toString(response.getEntity());
+				responseJson = EntityUtils.toString(response.getEntity());
 				System.out.println(responseJson);
 			}
 		} catch (Exception e) {
@@ -54,5 +60,6 @@ public class MenuService {
 				}
 			}
 		}
+		return responseJson;
 	}
 }

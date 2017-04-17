@@ -4,12 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.weixin.validation.app.App;
@@ -35,15 +33,14 @@ public class TestWeiXinMenu {
 		WeiXinMenu m1SubMenu1 = new WeiXinMenu();
 		m1SubMenu1.setId(2);
 		m1SubMenu1.setpId(1);
-		m1SubMenu1.setType("click");
+		m1SubMenu1.setType("view");
 		m1SubMenu1.setKey("click-checkout");
 		m1SubMenu1.setName("git checkout");
-		
 		
 		WeiXinMenu m1SubMenu2 = new WeiXinMenu();
 		m1SubMenu2.setId(3);
 		m1SubMenu2.setpId(1);
-		m1SubMenu2.setType("click");
+		m1SubMenu2.setType("view");
 		m1SubMenu2.setKey("click-reset");
 		m1SubMenu2.setName("git reset");
 		
