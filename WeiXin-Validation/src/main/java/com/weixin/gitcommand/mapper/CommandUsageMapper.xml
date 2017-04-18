@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.weixin.gitcommand.dao.CommandUsageMapper">
+  <resultMap id="BaseResultMap" type="com.weixin.gitcommand.model.CommandUsage">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="command_id" jdbcType="INTEGER" property="commandId" />
+    <result column="isTop" jdbcType="BIT" property="istop" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.weixin.gitcommand.model.CommandUsage">
+    <result column="desc" jdbcType="LONGVARCHAR" property="desc" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, title, content, command_id, isTop
+  </sql>
+  <sql id="Blob_Column_List">
+    desc
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_command_usage
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_command_usage
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.weixin.gitcommand.model.CommandUsage">
+    insert into tb_command_usage (id, title, content, 
+      command_id, isTop, desc
+      )
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{commandId,jdbcType=INTEGER}, #{istop,jdbcType=BIT}, #{desc,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.weixin.gitcommand.model.CommandUsage">
+    insert into tb_command_usage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="commandId != null">
+        command_id,
+      </if>
+      <if test="istop != null">
+        isTop,
+      </if>
+      <if test="desc != null">
+        desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="commandId != null">
+        #{commandId,jdbcType=INTEGER},
+      </if>
+      <if test="istop != null">
+        #{istop,jdbcType=BIT},
+      </if>
+      <if test="desc != null">
+        #{desc,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weixin.gitcommand.model.CommandUsage">
+    update tb_command_usage
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="commandId != null">
+        command_id = #{commandId,jdbcType=INTEGER},
+      </if>
+      <if test="istop != null">
+        isTop = #{istop,jdbcType=BIT},
+      </if>
+      <if test="desc != null">
+        desc = #{desc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.weixin.gitcommand.model.CommandUsage">
+    update tb_command_usage
+    set title = #{title,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      command_id = #{commandId,jdbcType=INTEGER},
+      isTop = #{istop,jdbcType=BIT},
+      desc = #{desc,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weixin.gitcommand.model.CommandUsage">
+    update tb_command_usage
+    set title = #{title,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      command_id = #{commandId,jdbcType=INTEGER},
+      isTop = #{istop,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

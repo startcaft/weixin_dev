@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	
+	<context id="wf_context" targetRuntime="MyBatis3">
+		<commentGenerator>
+			<!-- 是否取出自动生成的注释 true是 false 否 -->
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+
+		<!-- 数据库连接信息 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://119.23.56.247:3306/git_wx_db"
+			userId="root" password="5904395" />
+
+		<!-- model生成的位置 -->
+		<javaModelGenerator targetPackage="com.weixin.gitcommand.model"
+			targetProject="src/main/java">
+			<!-- enableSubPackages 是否让schema作为包的后缀 -->
+			<property name="enableSubPackages" value="false" />
+			<!-- 从数据库返回的值 清理前后的空格 -->
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<!-- mapper映射文件生成的位置 -->
+		<sqlMapGenerator targetPackage="com.weixin.gitcommand.mapper"
+			targetProject="src/main/java">
+			<!-- enableSubPackages 是否让schema作为包的后缀 -->
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+
+		<!-- Mapper接口生成的位置 -->
+		<javaClientGenerator targetPackage="com.weixin.gitcommand.dao"
+			targetProject="src/main/java" type="XMLMAPPER">
+			<!-- enableSubPackages 是否让schema作为包的后缀 -->
+			<property name="enableSubPackages" value="false" />
+		</javaClientGenerator>
+		
+		<!-- 指定数据库表 -->
+		<!-- 如果表没有主键，则只会生成insert语句，因为select/update语句都需要根据主键来 -->		
+		<table tableName="tb_command_usage" domainObjectName="CommandUsage"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">
+		</table>
+
+	</context>
+</generatorConfiguration>
