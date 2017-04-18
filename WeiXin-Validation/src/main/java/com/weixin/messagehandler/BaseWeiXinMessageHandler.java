@@ -25,6 +25,7 @@ public abstract class BaseWeiXinMessageHandler {
 				Map<String, String> requestMap = MessageUtil.parseRequestXml(request);
 				String fromUserName = requestMap.get("FromUserName");//发送方账号
 				String toUserName = requestMap.get("ToUserName");//开发者账号
+				String contextPath = request.getContextPath();
 //				String msgType = requestMap.get("MsgType");//消息类型
 				
 				//根据不同请求类型的消息，返回的文本消息内容也不一样
@@ -83,7 +84,7 @@ public abstract class BaseWeiXinMessageHandler {
 //	            }
 	            
 	            //构建响应消息对象，根据自己的业务情况实现不同的子类吧
-				BaseResponseMessage responseMessage = this.responseMessage(fromUserName,toUserName);
+				BaseResponseMessage responseMessage = this.responseMessage(fromUserName,toUserName,contextPath);
 				
 				//将被动回复的文本消息对象转换成xml
 				respXml = MessageUtil.respMessageToXml(responseMessage);
@@ -101,5 +102,5 @@ public abstract class BaseWeiXinMessageHandler {
 	 * @param toUserName 开发者原始ID 
 	 * @return BaseResponseMessage类型实例
 	 */
-	protected abstract BaseResponseMessage responseMessage(String fromUserName,String toUserName);
+	protected abstract BaseResponseMessage responseMessage(String fromUserName,String toUserName,String contextPath);
 }

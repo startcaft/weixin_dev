@@ -17,7 +17,7 @@ public class SingleNewsMessageHandler extends BaseWeiXinMessageHandler {
 	 * 构建一个响应图文消息
 	 */
 	@Override
-	protected BaseResponseMessage responseMessage(String fromUserName, String toUserName) {
+	protected BaseResponseMessage responseMessage(String fromUserName, String toUserName,String contextPath) {
 		{	
 			// 创建图文消息  
 			NewsResponseMessage newsMessage = new NewsResponseMessage();  
@@ -30,7 +30,7 @@ public class SingleNewsMessageHandler extends BaseWeiXinMessageHandler {
 			List<Article> articleList = new ArrayList<Article>(1);
 
 			Article article = new Article();  
-			article.setTitle("Git分布式版本控制系统学习");
+			article.setTitle("Blog之Git随笔");
 			article.setDescription("Git是一款免费，开源的分布式版本控制系统，可以有效的,高速的处理从很小到很大的项目版本管理。 "
 					+ "Git是Linus Torvalds为了帮助管理Linux内核开发而开发的一个开放源码的版本控制软件。");
 			article.setUrl("http://www.cnblogs.com/startcaft/category/972509.html");
