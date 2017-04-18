@@ -1,4 +1,4 @@
-package com.weixin.wxmessager;
+package com.weixin.wxmessage;
 
 /**
  * 请求消息之图片消息

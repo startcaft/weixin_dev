@@ -1,4 +1,4 @@
-package com.weixin.wxmessager.reponse;
+package com.weixin.wxmessage.reponse;
 
 /**
  * 图片

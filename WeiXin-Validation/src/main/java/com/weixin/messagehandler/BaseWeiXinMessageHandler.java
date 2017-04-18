@@ -4,7 +4,7 @@ package com.weixin.messagehandler;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import com.weixin.validation.util.MessageUtil;
-import com.weixin.wxmessager.reponse.BaseResponseMessage;
+import com.weixin.wxmessage.reponse.BaseResponseMessage;
 
 /**
  * 微信消息的统一处理 基类 <br>

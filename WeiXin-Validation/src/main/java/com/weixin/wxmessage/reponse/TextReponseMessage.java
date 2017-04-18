@@ -1,11 +1,11 @@
-package com.weixin.wxmessager;
+package com.weixin.wxmessage.reponse;
 
 /**
- * 请求消息之文本消息
+ * 返回为本消息
  */
-public class ContentMessager extends BaseMessage {
+public class TextReponseMessage extends BaseResponseMessage {
 	
-	// 消息内容
+	// 回复的消息内容
     private String Content;
 
     public String getContent() {

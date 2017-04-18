@@ -14,9 +14,9 @@ import com.thoughtworks.xstream.core.util.QuickWriter;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 import com.thoughtworks.xstream.io.xml.PrettyPrintWriter;
 import com.thoughtworks.xstream.io.xml.XppDriver;
-import com.weixin.wxmessager.reponse.Article;
-import com.weixin.wxmessager.reponse.BaseResponseMessage;
-import com.weixin.wxmessager.reponse.NewsResponseMessage;
+import com.weixin.wxmessage.reponse.Article;
+import com.weixin.wxmessage.reponse.BaseResponseMessage;
+import com.weixin.wxmessage.reponse.NewsResponseMessage;
 
 /**
  * 微信消息处理工具类

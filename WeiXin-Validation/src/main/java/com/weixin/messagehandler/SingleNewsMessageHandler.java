@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import com.weixin.validation.util.MessageUtil;
-import com.weixin.wxmessager.reponse.Article;
-import com.weixin.wxmessager.reponse.BaseResponseMessage;
-import com.weixin.wxmessager.reponse.NewsResponseMessage;
+import com.weixin.wxmessage.reponse.Article;
+import com.weixin.wxmessage.reponse.BaseResponseMessage;
+import com.weixin.wxmessage.reponse.NewsResponseMessage;
 
 /**
  * 处理请求消息，并返回单一图文响应
