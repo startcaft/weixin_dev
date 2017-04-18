@@ -1,6 +1,7 @@
 package com.weixin.validation.app.service;
 
 import javax.servlet.http.HttpServletRequest;
+import com.weixin.vo.ErrorEntity;
 
 public interface CoreService {
 	
@@ -12,5 +13,5 @@ public interface CoreService {
 	/**
 	 * 创建自定义菜单
 	 */
-	public String createWeiXinMenu(HttpServletRequest request);
+	public ErrorEntity createWeiXinMenu(HttpServletRequest request);
 }

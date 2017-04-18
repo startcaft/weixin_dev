@@ -8,8 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.weixin.validation.app.service.CoreServiceImpl;
 import com.weixin.validation.util.WeiXinSignUtil;
+import com.weixin.vo.ErrorEntity;
 
 @Controller
 @RequestMapping("/core")
@@ -58,14 +61,11 @@ public class WxCoreController {
 	
 	/*自定义菜单*/
 	@RequestMapping(value="/createMenu")
-	public void createMenu(HttpServletRequest request,HttpServletResponse response) throws IOException{
+	@ResponseBody
+	public ErrorEntity createMenu(HttpServletRequest request,HttpServletResponse response) throws IOException{
 		{
-			String resultJson = coreService.createWeiXinMenu(request);
-			
-			//响应消息
-			PrintWriter writer = response.getWriter();
-			writer.print(resultJson);
-			writer.close();
+			ErrorEntity error = coreService.createWeiXinMenu(request);
+			return error;
 		}
 	}
 }
