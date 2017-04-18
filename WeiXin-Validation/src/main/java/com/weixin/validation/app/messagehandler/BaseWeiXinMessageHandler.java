@@ -1,4 +1,4 @@
-package com.weixin.messagehandler;
+package com.weixin.validation.app.messagehandler;
 
 
 import com.weixin.validation.util.MessageUtil;

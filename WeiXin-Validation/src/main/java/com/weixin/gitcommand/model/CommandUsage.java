@@ -1,17 +1,15 @@
 package com.weixin.gitcommand.model;
 
 public class CommandUsage {
+	
     private Integer id;
-
     private String title;
-
     private String content;
-
     private Integer commandId;
-
     private Boolean istop;
-
     private String desc;
+    
+    private Command command;
 
     public Integer getId() {
         return id;
@@ -60,4 +58,12 @@ public class CommandUsage {
     public void setDesc(String desc) {
         this.desc = desc == null ? null : desc.trim();
     }
+
+	public Command getCommand() {
+		return command;
+	}
+
+	public void setCommand(Command command) {
+		this.command = command;
+	}
 }

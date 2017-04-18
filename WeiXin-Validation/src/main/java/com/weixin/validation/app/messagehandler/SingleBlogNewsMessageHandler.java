@@ -1,4 +1,4 @@
-package com.weixin.messagehandler;
+package com.weixin.validation.app.messagehandler;
 
 import java.util.ArrayList;
 import java.util.Date;

@@ -10,10 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.weixin.messagehandler.BlogCommand;
-import com.weixin.messagehandler.Command;
-import com.weixin.messagehandler.GitCheckoutCommand;
-import com.weixin.messagehandler.HelpCommand;
+
+import com.weixin.validation.app.messagehandler.BlogCommand;
+import com.weixin.validation.app.messagehandler.Command;
+import com.weixin.validation.app.messagehandler.GitCheckoutCommand;
+import com.weixin.validation.app.messagehandler.HelpCommand;
 import com.weixin.validation.app.service.CoreServiceImpl;
 import com.weixin.validation.util.MessageUtil;
 import com.weixin.validation.util.WeiXinSignUtil;

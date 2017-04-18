@@ -1,4 +1,4 @@
-package com.weixin.messagehandler;
+package com.weixin.validation.app.messagehandler;
 
 import java.util.Date;
 
@@ -21,8 +21,8 @@ public class TextTipMessageHandler extends BaseWeiXinMessageHandler {
 			text.setCreateTime(new Date().getTime());  
 			text.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_TEXT);  
 			StringBuffer sb = new StringBuffer("git常用命令的使用场景,请回复数字查看:\n\n");
-			sb.append("1.git reset命令\n");
-			sb.append("2.git chekcout命令\n\n");
+			sb.append("1 - git reset命令\n");
+			sb.append("2 - git chekcout命令\n\n");
 			sb.append("回复?显示此帮助信息");
 			
 			text.setContent(sb.toString());
