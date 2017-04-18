@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.weixin.messagehandler.BaseWeiXinMessageHandler;
-import com.weixin.messagehandler.SingleNewsMessageHandler;
+import com.weixin.messagehandler.SingleBlogNewsMessageHandler;
 import com.weixin.validation.util.HttpInvokeMethod;
 import com.weixin.validation.util.WeiXinApiInvokeUtil;
 import com.weixin.validation.util.WeiXinConstant;
@@ -25,13 +25,13 @@ public class CoreServiceImpl implements CoreService {
 	
 	//初始化
 	public CoreServiceImpl() {
-		messageHandler = new SingleNewsMessageHandler();
+		messageHandler = new SingleBlogNewsMessageHandler();
 	}
 
 	@Override
-	public String WeiXinMessageProcess(HttpServletRequest request) {
+	public String WeiXinMessageProcess(String fromUserName, String toUserName) {
 		{
-			return messageHandler.processRequestTemplate(request);
+			return messageHandler.processRequestTemplate(fromUserName,toUserName);
 		}
 	}
 
