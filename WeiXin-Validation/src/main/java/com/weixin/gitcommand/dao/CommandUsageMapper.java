@@ -18,6 +18,6 @@ public interface CommandUsageMapper {
 	/*根据id查询，关联查询tb_command*/
 	CommandUsage selectByPrimaryKeyWithCommand(Integer id);
 	
-	/*根据指定属性查询集合*/
+	/*根据指定属性查询集合，sort越小越排前，而且集合最大的个数不能超过8*/
 	List<CommandUsage> selectList(Map<String, Object> map);
 }

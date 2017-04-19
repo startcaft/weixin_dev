@@ -8,6 +8,7 @@ public class CommandUsage {
     private Integer commandId;
     private Boolean istop;
     private String desc;
+    private Integer sort;
     
     private Command command;
 
@@ -65,5 +66,13 @@ public class CommandUsage {
 
 	public void setCommand(Command command) {
 		this.command = command;
+	}
+
+	public Integer getSort() {
+		return sort;
+	}
+
+	public void setSort(Integer sort) {
+		this.sort = sort;
 	}
 }

@@ -8,6 +8,7 @@
 		<result column="content" jdbcType="VARCHAR" property="content" />
 		<result column="command_id" jdbcType="INTEGER" property="commandId" />
 		<result column="isTop" jdbcType="BIT" property="istop" />
+		<result column="sort" jdbcType="INTEGER" property="sort" />
 	</resultMap>
 	<resultMap extends="BaseResultMap" id="ResultMapWithBLOBs"
 		type="com.weixin.gitcommand.model.CommandUsage">
@@ -22,7 +23,7 @@
 	</resultMap>
 	
 	<sql id="Base_Column_List">
-		id, title, content, command_id, isTop
+		id,title,content,command_id,isTop,srot
 	</sql>
 	<sql id="Blob_Column_List">
 		desc
@@ -46,8 +47,7 @@
 	</select>
 	
 	<select id="selectList" resultMap="ResultMapWithBLOBs" parameterType="map">
-		select *
-		from tb_command_usage
+		select id,title,content,'desc',command_id,sort from tb_command_usage
 		<where>
 			<if test="commandId != null">
     			AND command_id = #{commandId} 
@@ -56,6 +56,7 @@
     			AND title like CONCAT('%',#{title},'%')  
   			</if>
 		</where>
+		ORDER BY sort ASC
 	</select>
 	
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
@@ -64,11 +65,12 @@
 	</delete>
 	<insert id="insert" parameterType="com.weixin.gitcommand.model.CommandUsage">
 		insert into tb_command_usage (id, title, content,
-		command_id, isTop, desc
+		command_id, isTop, desc,sort
 		)
 		values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR},
 		#{content,jdbcType=VARCHAR},
-		#{commandId,jdbcType=INTEGER}, #{istop,jdbcType=BIT}, #{desc,jdbcType=LONGVARCHAR}
+		#{commandId,jdbcType=INTEGER}, #{istop,jdbcType=BIT}, #{desc,jdbcType=LONGVARCHAR},
+		#{sort,jdbcType=INTEGER}
 		)
 	</insert>
 	<update id="updateByPrimaryKeySelective" parameterType="com.weixin.gitcommand.model.CommandUsage">
@@ -88,6 +90,9 @@
 			</if>
 			<if test="desc != null">
 				desc = #{desc,jdbcType=LONGVARCHAR},
+			</if>
+			<if test="srot != null">
+				srot = #{commandId,jdbcType=INTEGER}
 			</if>
 		</set>
 		where id = #{id,jdbcType=INTEGER}

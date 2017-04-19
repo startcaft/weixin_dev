@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.weixin.validation.app.service.CommandUsageService;
 import com.weixin.vo.CommandUsageVo;
+import com.weixin.vo.ResponseEntity;
 
 @Controller
 @RequestMapping("/git")
@@ -20,9 +21,17 @@ public class CommandController {
 	
 	@RequestMapping("/list/{commandId}")
 	@ResponseBody
-	public List<CommandUsageVo> usageList(@PathVariable(value="commandId",required=true) Integer commandId){
+	public ResponseEntity usageList(@PathVariable(value="commandId",required=true) Integer commandId){
 		
-		return cuService.getList(commandId);
+		ResponseEntity entity = new ResponseEntity();
+		try {
+			List<CommandUsageVo> weiXinList = cuService.getWeiXinList(commandId);
+			entity.setErrCode(0);
+			entity.setRespData(weiXinList);
+		} catch (Exception e) {
+			entity.setErrMsg(e.getMessage());
+		}
+		return entity;
 	}
 	
 	@RequestMapping("/detail/{detailId}")

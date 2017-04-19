@@ -8,6 +8,7 @@ public class CommandUsageVo {
     private Integer commandId;
     private Boolean istop;
     private String desc;
+    private Integer sort;
     
     private String commandName;
 
@@ -66,4 +67,13 @@ public class CommandUsageVo {
 	public void setCommandName(String commandName) {
 		this.commandName = commandName;
 	}
+
+	public Integer getSort() {
+		return sort;
+	}
+
+	public void setSort(Integer sort) {
+		this.sort = sort;
+	}
+	
 }

@@ -34,7 +34,7 @@ public class SingleBlogNewsMessageHandler extends BaseWeiXinMessageHandler {
 			article.setDescription("Git是一款免费，开源的分布式版本控制系统，可以有效的,高速的处理从很小到很大的项目版本管理。 "
 					+ "Git是Linus Torvalds为了帮助管理Linux内核开发而开发的一个开放源码的版本控制软件。");
 			article.setUrl("http://www.cnblogs.com/startcaft/category/972509.html");
-			article.setPicUrl("http://images.cnblogs.com/cnblogs_com/startcaft/984400/o_timg.jpg");
+			article.setPicUrl("http://119.23.56.247/pics/gitimgs/gitimg.jpg");
 			
 			articleList.add(article);
 			
