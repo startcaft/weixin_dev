@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /*
  * sprigboot继承mybatis的入口
@@ -19,6 +20,7 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
  */
 @Configuration
 @MapperScan(basePackages="com.weixin.gitcommand.dao")
+@EnableTransactionManagement
 public class MyBatisConfig {
 	
 	@Autowired
@@ -35,6 +37,9 @@ public class MyBatisConfig {
 		PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();  
 		bean.setMapperLocations(resolver.getResources("classpath:com/weixin/gitcommand/mapper/*.xml"));
 		
+		//加载mybatis配置文件
+		bean.setConfigLocation(resolver.getResource("classpath:conf/mybatis-config.xml"));
+		
 		bean.getObject().getConfiguration().setMapUnderscoreToCamelCase(true);
 		
 		return bean.getObject();
@@ -43,7 +48,7 @@ public class MyBatisConfig {
 	/**  
 	* 配置事务管理器  
 	*/  
-	@Bean(name = "transactionManager")  
+	@Bean
 	@Primary  
 	public DataSourceTransactionManager transactionManager() throws Exception {  
 		return new DataSourceTransactionManager(this.dataSource);  

@@ -92,9 +92,28 @@
 			<artifactId>mybatis-spring</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.mybatis.caches</groupId>
+			<artifactId>mybatis-ehcache</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.scala-lang</groupId>
 			<artifactId>scala-library</artifactId>
 			<version>2.11.0</version>
+		</dependency>
+		<!-- Spring 邮件,计划任务，缓存等第三方支持 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+		</dependency>
+		<!-- Ehcache -->
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache</artifactId>
+		</dependency>
+		<!-- 动态编译,Mybatis配置代理工厂时需要 -->
+		<dependency>
+			<groupId>org.javassist</groupId>
+			<artifactId>javassist</artifactId>
 		</dependency>
 	</dependencies>
 
@@ -117,7 +136,7 @@
 					<dependency>
 						<groupId> mysql</groupId>
 						<artifactId>mysql-connector-java</artifactId>
-						<version>5.1.40</version>  
+						<version>5.1.40</version>
 					</dependency>
 					<dependency>
 						<groupId>org.mybatis.generator</groupId>
@@ -145,7 +164,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		
+
 		<!-- 如果使用mapper.xml -->
 		<resources>
 			<resource>
@@ -155,7 +174,7 @@
 				</includes>
 			</resource>
 		</resources>
-		
+
 	</build>
 
 </project>

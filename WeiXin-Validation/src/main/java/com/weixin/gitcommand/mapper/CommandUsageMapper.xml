@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.weixin.gitcommand.dao.CommandUsageMapper">
-
+	
+	<!-- 使用二级缓存 ,property不配置也没关系，会有默认值 -->
+	<cache type="org.mybatis.caches.ehcache.EhcacheCache" >  
+    	<property name="timeToIdleSeconds" value="7200"/><!--2 hour-->  
+    	<property name="timeToLiveSeconds" value="7200"/><!--2 hour-->  
+    	<property name="maxEntriesLocalHeap" value="1000"/>  
+    	<property name="maxEntriesLocalDisk" value="10000000"/>  
+    	<property name="memoryStoreEvictionPolicy" value="LRU"/>  
+	</cache>
+	
 	<resultMap id="BaseResultMap" type="com.weixin.gitcommand.model.CommandUsage">
 		<id column="id" jdbcType="INTEGER" property="id" />
 		<result column="title" jdbcType="VARCHAR" property="title" />
@@ -30,7 +39,7 @@
 	</sql>
 	
 	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
-		resultMap="ResultMapWithBLOBs">
+		resultMap="ResultMapWithBLOBs" useCache="false">
 		select
 		<include refid="Base_Column_List" />
 		,
@@ -40,13 +49,13 @@
 	</select>
 	
 	<select id="selectByPrimaryKeyWithCommand" parameterType="java.lang.Integer"
-		resultMap="ResultMapWithCommand">
+		resultMap="ResultMapWithCommand" useCache="false">
 		SELECT u.*,c.command_name,c.command_desc FROM 
 			tb_command_usage u,tb_command c 
 			WHERE c.id = u.command_id AND u.id = #{id}
 	</select>
 	
-	<select id="selectList" resultMap="ResultMapWithBLOBs" parameterType="map">
+	<select id="selectList" resultMap="ResultMapWithBLOBs" parameterType="map" useCache="true">
 		select id,title,content,'desc',command_id,sort from tb_command_usage
 		<where>
 			<if test="commandId != null">

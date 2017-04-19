@@ -1,8 +1,13 @@
 package com.weixin.gitcommand.model;
 
-public class CommandUsage {
+public class CommandUsage implements java.io.Serializable {
 	
-    private Integer id;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private Integer id;
     private String title;
     private String content;
     private Integer commandId;

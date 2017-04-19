@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import com.weixin.gitcommand.dao.CommandUsageMapper;
 import com.weixin.gitcommand.model.CommandUsage;
 import com.weixin.validation.app.exception.ServiceException;
@@ -21,6 +20,8 @@ public class CommandUsageServiceImpl implements CommandUsageService {
 	
 	private static final Logger logger = LoggerFactory.getLogger(CommandUsageServiceImpl.class);
 	
+	//private static final String CACHE_NAME = "mybatisCache";
+	
 	@Autowired
 	private CommandUsageMapper cumapper;
 	
@@ -30,8 +31,9 @@ public class CommandUsageServiceImpl implements CommandUsageService {
 		return null;
 	}
 	
-	@Transactional(readOnly=true)
-	@Override
+	//@TriggersRemove(cacheName="userCache", when=When.AFTER_METHOD_INVOCATION, removeAll=true) 
+	//这句代码加到service里面的添加、删除、修改方法上。这样只要这几个方法有调用，缓存自动清除。
+	//@Cacheable(value=CACHE_NAME)
 	public List<CommandUsageVo> getWeiXinList(Integer commandId) throws ServiceException {
 		{
 			Map<String, Object> params = new HashMap<>();

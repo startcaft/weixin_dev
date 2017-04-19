@@ -2,5 +2,17 @@
 
 <configuration>
 	<include resource="org/springframework/boot/logging/logback/base.xml" />
-	<logger name="org.springframework.web" level="INFO" />
+	
+	<!-- 测试环境，开发环境. -->
+    <springProfile name="test,dev">
+        <logger name="org.springframework.web" level="INFO"/>
+        <logger name="com.weixin.validation.app.listener" level="INFO"/>
+        <logger name="com.weixin.gitcommand.dao" level="INFO"/>
+    </springProfile>
+    
+    <!-- 生产环境. 主要记录Service层在做数据库交互的时候产生的错误-->
+    <springProfile name="prod">
+        <logger name="com.weixin.validation.app.service" level="ERROR" />
+    </springProfile>
+	
 </configuration>
