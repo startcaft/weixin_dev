@@ -77,11 +77,13 @@ public class WxCoreController {
 						break;
 				}
 			}
-			if (requestMsgType.equals(MessageUtil.EVENT_TYPE_SUBSCRIBE)) {//关注
-				command = new HelpCommand(fromUserName,toUserName);
+			if (requestMsgType.equals("event")) {//事件
+				if (requestMap.get("Event").equals(MessageUtil.EVENT_TYPE_SUBSCRIBE)) {//订阅
+					command = new HelpCommand(fromUserName,toUserName);
+				}
 			}
 			
-			System.out.println(command.getClass().getSimpleName());
+			//System.out.println(command.getClass().getSimpleName());
 			
 			String respXmlData = command.getResponseMessage();
 			

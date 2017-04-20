@@ -40,12 +40,12 @@ public class CheckoutMulMessageHandler extends BaseWeiXinMessageHandler {
 			for (int i = 0; i < voList.size(); i++) {
 				Article article = new Article();
 				article.setTitle(voList.get(i).getTitle());
-				article.setUrl("http://119.23.56.247/WeiXin-Validation/git/detail/" + voList.get(i).getId());
+				article.setUrl("http://startcaft.win/WeiXin-Validation/git/detail/" + voList.get(i).getId());
 				if(i==0){
-					article.setPicUrl("http://119.23.56.247/pics/gitimgs/gittop.jpg");
+					article.setPicUrl("http://startcaft.win/pics/gitimgs/gittop.jpg");
 				}
 				else{
-					article.setPicUrl("http://119.23.56.247/pics/gitimgs/branch.jpg");
+					article.setPicUrl("http://startcaft.win/pics/gitimgs/branch.jpg");
 				}
 				
 				articleList.add(article);

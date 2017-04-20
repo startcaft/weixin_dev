@@ -4,9 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>欢迎访问我的网站 www.startcaft.com</title>
+<title>关注我的公众号</title>
 </head>
 <body>
-	<h1>欢迎访问我的网站 www.startcaft.com</h1>
+	<h1>欢迎关注我的微信公众号</h1>
+	<div>
+		<img alt="" src="${ pageContext.servletContext.contextPath }/static/images/wx_code.jpg">
+	</div>
 </body>
 </html>
