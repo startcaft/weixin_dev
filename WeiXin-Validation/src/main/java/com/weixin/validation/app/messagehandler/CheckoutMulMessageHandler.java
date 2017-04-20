@@ -40,7 +40,7 @@ public class CheckoutMulMessageHandler extends BaseWeiXinMessageHandler {
 			for (int i = 0; i < voList.size(); i++) {
 				Article article = new Article();
 				article.setTitle(voList.get(i).getTitle());
-				article.setUrl("http://www.cnblogs.com/startcaft/category/972509.html");
+				article.setUrl("http://119.23.56.247/WeiXin-Validation/git/detail/" + voList.get(i).getId());
 				if(i==0){
 					article.setPicUrl("http://119.23.56.247/pics/gitimgs/gittop.jpg");
 				}

@@ -7,13 +7,5 @@ public interface CommandMapper {
 
     int insert(Command record);
 
-    int insertSelective(Command record);
-
     Command selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(Command record);
-
-    int updateByPrimaryKeyWithBLOBs(Command record);
-
-    int updateByPrimaryKey(Command record);
 }

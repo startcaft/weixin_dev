@@ -4,7 +4,7 @@ public class Command {
 	
     private Integer id;
     private String commandName;
-    private byte[] commandDesc;
+    private String commandDesc;
 
     public Integer getId() {
         return id;
@@ -22,11 +22,11 @@ public class Command {
         this.commandName = commandName == null ? null : commandName.trim();
     }
 
-    public byte[] getCommandDesc() {
+    public String getCommandDesc() {
         return commandDesc;
     }
 
-    public void setCommandDesc(byte[] commandDesc) {
+    public void setCommandDesc(String commandDesc) {
         this.commandDesc = commandDesc;
     }
 }

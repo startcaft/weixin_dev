@@ -10,7 +10,7 @@ public interface CommandUsageService {
 	 * 获取tb_command_usage指定id的详细
 	 * @param IsAssociatedCommand 是否关联查询tb_command
 	 */
-	public CommandUsageVo getDetail(Integer id,boolean IsAssociatedCommand) throws ServiceException;
+	public CommandUsageVo getDetail(Integer commandUsageId,boolean IsAssociatedCommand) throws ServiceException;
 	
 	/**
 	 * 获取tb_command_usage集合 <br>

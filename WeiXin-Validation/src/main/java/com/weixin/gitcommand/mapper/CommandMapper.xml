@@ -1,86 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.weixin.gitcommand.dao.CommandMapper">
+
 	<resultMap id="BaseResultMap" type="com.weixin.gitcommand.model.Command">
 		<id column="id" jdbcType="INTEGER" property="id" />
 		<result column="command_name" jdbcType="VARCHAR" property="commandName" />
+		<result column="command_desc" jdbcType="VARCHAR" property="commandDesc" />
 	</resultMap>
-	<resultMap extends="BaseResultMap" id="ResultMapWithBLOBs"
-		type="com.weixin.gitcommand.model.Command">
-		<result column="command_desc" jdbcType="VARBINARY" property="commandDesc" />
-	</resultMap>
+	
 	<sql id="Base_Column_List">
-		id, command_name
+		id,command_name,command_desc
 	</sql>
-	<sql id="Blob_Column_List">
-		command_desc
-	</sql>
+	
 	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
-		resultMap="ResultMapWithBLOBs">
+		resultMap="BaseResultMap">
 		select
 		<include refid="Base_Column_List" />
-		,
-		<include refid="Blob_Column_List" />
 		from tb_command
 		where id = #{id,jdbcType=INTEGER}
 	</select>
+	
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
 		delete from tb_command
 		where id = #{id,jdbcType=INTEGER}
 	</delete>
+	
 	<insert id="insert" parameterType="com.weixin.gitcommand.model.Command">
 		insert into tb_command (id, command_name, command_desc
 		)
 		values (#{id,jdbcType=INTEGER}, #{commandName,jdbcType=VARCHAR},
-		#{commandDesc,jdbcType=VARBINARY}
+		#{commandDesc,jdbcType=VARCHAR}
 		)
 	</insert>
-	<insert id="insertSelective" parameterType="com.weixin.gitcommand.model.Command">
-		insert into tb_command
-		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="id != null">
-				id,
-			</if>
-			<if test="commandName != null">
-				command_name,
-			</if>
-			<if test="commandDesc != null">
-				command_desc,
-			</if>
-		</trim>
-		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="id != null">
-				#{id,jdbcType=INTEGER},
-			</if>
-			<if test="commandName != null">
-				#{commandName,jdbcType=VARCHAR},
-			</if>
-			<if test="commandDesc != null">
-				#{commandDesc,jdbcType=VARBINARY},
-			</if>
-		</trim>
-	</insert>
-	<update id="updateByPrimaryKeySelective" parameterType="com.weixin.gitcommand.model.Command">
-		update tb_command
-		<set>
-			<if test="commandName != null">
-				command_name = #{commandName,jdbcType=VARCHAR},
-			</if>
-			<if test="commandDesc != null">
-				command_desc = #{commandDesc,jdbcType=VARBINARY},
-			</if>
-		</set>
-		where id = #{id,jdbcType=INTEGER}
-	</update>
-	<update id="updateByPrimaryKeyWithBLOBs" parameterType="com.weixin.gitcommand.model.Command">
-		update tb_command
-		set command_name = #{commandName,jdbcType=VARCHAR},
-		command_desc = #{commandDesc,jdbcType=VARBINARY}
-		where id = #{id,jdbcType=INTEGER}
-	</update>
-	<update id="updateByPrimaryKey" parameterType="com.weixin.gitcommand.model.Command">
-		update tb_command
-		set command_name = #{commandName,jdbcType=VARCHAR}
-		where id = #{id,jdbcType=INTEGER}
-	</update>
+	
 </mapper>

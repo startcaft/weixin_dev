@@ -77,6 +77,9 @@ public class WxCoreController {
 						break;
 				}
 			}
+			if (requestMsgType.equals(MessageUtil.EVENT_TYPE_SUBSCRIBE)) {//关注
+				command = new HelpCommand(fromUserName,toUserName);
+			}
 			
 			System.out.println(command.getClass().getSimpleName());
 			

@@ -11,6 +11,7 @@ public class CommandUsageVo {
     private Integer sort;
     
     private String commandName;
+    private String commandDesc;
 
 	public Integer getId() {
 		return id;
@@ -74,6 +75,14 @@ public class CommandUsageVo {
 
 	public void setSort(Integer sort) {
 		this.sort = sort;
+	}
+
+	public String getCommandDesc() {
+		return commandDesc;
+	}
+
+	public void setCommandDesc(String commandDesc) {
+		this.commandDesc = commandDesc;
 	}
 	
 }

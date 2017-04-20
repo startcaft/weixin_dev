@@ -26,9 +26,33 @@ public class CommandUsageServiceImpl implements CommandUsageService {
 	private CommandUsageMapper cumapper;
 	
 	@Override
-	public CommandUsageVo getDetail(Integer id, boolean IsAssociatedCommand) throws ServiceException {
-		// TODO Auto-generated method stub
-		return null;
+	public CommandUsageVo getDetail(Integer commandUsageId, boolean IsAssociatedCommand) throws ServiceException {
+		{
+			if (commandUsageId == null || commandUsageId <= 0) {
+				throw new ServiceException("无效的参数");
+			}
+		}
+		CommandUsage entity = null;
+		CommandUsageVo vo = null;
+		{
+			if (IsAssociatedCommand) {
+				entity = cumapper.selectByPrimaryKeyWithCommand(commandUsageId);
+			}
+			else{
+				entity =cumapper.selectByPrimaryKey(commandUsageId);
+			}
+		}
+		{
+			if (entity != null) {
+				vo = new CommandUsageVo();
+				BeanUtils.copyProperties(entity, vo);
+				if (entity.getCommand() != null) {
+					vo.setCommandName(entity.getCommand().getCommandName());
+					vo.setCommandDesc(entity.getCommand().getCommandDesc());
+				}
+			}
+		}
+		return vo;
 	}
 	
 	//@TriggersRemove(cacheName="userCache", when=When.AFTER_METHOD_INVOCATION, removeAll=true) 
